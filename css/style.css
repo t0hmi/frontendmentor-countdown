@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Red Hat Text", sans-serif;
+  font-size: 0.8rem;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-image: linear-gradient(to top, #1e1f29, #191a24);
+}
+body:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-image: url(../images/pattern-hills.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 100%;
+  height: 30%;
+  z-index: 2;
+}
+body:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-image: url(../images/bg-stars.svg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+  margin-top: 135px;
+}
+.container .headline {
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  margin-bottom: 110px;
+  letter-spacing: 5px;
+  font-size: 1.2rem;
+  width: 100%;
+}
+.container .timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+.container .timer .item {
+  padding: 30px 30px;
+  margin: 0 30px;
+  color: #fb6087;
+  font-size: 4.5em;
+  position: relative;
+  border-radius: 5px;
+  background-color: #343650;
+  box-shadow: 0 10px #191a24;
+  min-width: 150px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.container .timer .item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #1e1f29;
+  opacity: 0.4;
+}
+.container .timer .item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #343650;
+  opacity: 0.4;
+  transform-origin: top left 50%;
+  transition: transform 1s;
+}
+.container .timer .item .value {
+  z-index: 5;
+}
+.container .timer .item .dot {
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #191a24;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.container .timer .item .r-dot {
+  right: -6.5%;
+}
+.container .timer .item .l-dot {
+  left: 0;
+}
+.container .timer .item.active::after {
+  animation: flipAnim 1s infinite reverse;
+}
+.container .timer .item.active .value {
+  animation: value 1s infinite;
+}
+.container .timer .item_title {
+  margin: 18px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: #8486a9;
+  font-size: 0.9em;
+  letter-spacing: 3px;
+}
+
+@keyframes flipAnim {
+  0% {
+    transform: rotateX(0);
+    top: 50%;
+    bottom: 0;
+  }
+  50% {
+    transform: rotateX(-90deg);
+    top: 25%;
+    bottom: 25%;
+  }
+  100% {
+    transform: rotateX(-180deg);
+    top: 0%;
+    bottom: 50%;
+  }
+}
+@keyframes value {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+.footer .link {
+  margin: 0 20px;
+}
+.footer .link img {
+  transition: all 0.3s ease;
+}
+.footer .link:hover img {
+  transform: translateY(-5px);
+}
+
+@media screen and (max-width: 900px) {
+  .container .timer .item {
+    min-width: 70px;
+    font-size: 3em;
+    padding: 15px;
+    margin: 0 5px;
+  }
+  .container .timer .item .r-dot {
+    right: -14%;
+  }
+  .container .timer .item_title {
+    font-size: 0.6em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
